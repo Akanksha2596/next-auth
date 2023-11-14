@@ -10,7 +10,10 @@ export default function Navbar() {
       <h1 className="logo">
         <Link href="/">NextAuth</Link>
       </h1>
+
       <ul className={`main-nav ${!session && loading ? "loading" : "loaded"}`}>
+        {/*avoiding flicker of signIn and signOut with the help of class loading and loaded*/}
+        {/* <ul className={`main-nav`}> // provide session to provider to avoid flicker, since we receive it as props in getServerSideProps */}
         <li>
           <Link href="/">Home</Link>
         </li>
@@ -20,7 +23,6 @@ export default function Navbar() {
         <li>
           <Link href="/blog">Blog</Link>
         </li>
-
         {!loading && !session && (
           <li>
             <Link
